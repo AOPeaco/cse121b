@@ -3,7 +3,7 @@
 /* Declare and initialize global variables */
 
 const templesElement = document.querySelector("#temples");
-const templesList = [];
+let templesList = [];
 
 /* async displayTemples Function */
 
@@ -32,8 +32,8 @@ const getTemples = async () => {
     const response = await fetch("https://byui-cse.github.io/cse121b-ww-course/resources/temples.json");
     if (response.ok) {
 
-        const templesData = await response.json();
-        displayTemples(templesData);
+        templesList = await response.json();
+        displayTemples(templesList);
     }
 }
 
@@ -52,14 +52,24 @@ function filterTemples(temples) {
     switch (filter) {
         case "utah":
 
-            displayTemples(temples.filter(temple => temple.location.toLowerCase().includes("utah")));
+            let utahTemples = temples.filter(temple => temple.location.includes("Utah"));
+            displayTemples(utahTemples);
             break;
 
         case "notutah":
 
-            displayTemples(temples.filter(temple => temple.location.toLowerCase().excludes("utah")));
+            let otherTemples = temples.filter(temple => !temple.location.includes("Utah"));
+            displayTemples(otherTemples);
             break;
 
+        case "older":
+
+        //Don't know how to write this one, so I'm skipping over it for now.
+
+        case "all":
+
+            displayTemples(temples);
+            break;
 
     }
 }
