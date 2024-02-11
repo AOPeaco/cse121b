@@ -63,8 +63,9 @@ function filterTemples(temples) {
             break;
 
         case "older":
-
-        //Don't know how to write this one, so I'm skipping over it for now.
+            let olderTemples = temples.filter(temple => new Date(temple.dedicated) < new Date("1950, January, 1"));
+            displayTemples(olderTemples);
+            break;
 
         case "all":
 
