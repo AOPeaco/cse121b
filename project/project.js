@@ -34,7 +34,7 @@ async function getData(apiType) {
     }
 }
 
-
+// This is to fetch the selected api based on which is selected - at least, that is the intended function.
 function getDataFromSelected() {
     const apiSelector = document.getElementById("apiSelector");
     const selectedAPI = apiSelector.value;
