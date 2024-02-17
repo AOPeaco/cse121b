@@ -21,7 +21,7 @@ async function getData(apiType) {
 
         if (apiType === "joke") {
             const jokeResponse = data.joke;
-            console.log(jokeResponse);
+            alert(jokeResponse);
         } else if (apiType === "trivia") {
             // Out of this particular API, there's a multitude of keys that I can pick from such as "difficulty", "category", "type", etc.
             // But for my purposes, I only need the "question" key.
@@ -31,11 +31,11 @@ async function getData(apiType) {
             randomIndex = Math.floor(Math.random() * triviaArray.length);
 
             let triviaResponse = triviaArray[randomIndex];
-            console.log(triviaResponse);
+            alert(triviaResponse);
         }
 
     } catch (error) {
-        console.error(error);
+        alert(error);
     }
 }
 
@@ -47,6 +47,6 @@ function getDataFromSelected() {
     if (selectedAPI) {
         getData(selectedAPI);
     } else {
-        console.error("Please make a selection");
+        alert("Please make a selection");
     }
 }
