@@ -25,7 +25,12 @@ async function getData(apiType) {
         } else if (apiType === "trivia") {
             // Out of this particular API, there's a multitude of keys that I can pick from such as "difficulty", "category", "type", etc.
             // But for my purposes, I only need the "question" key.
-            const triviaResponse = data.question;
+            const triviaArray = data.results.map(result => result.question);
+
+            // This is making it so I can get a random question out of the 40 possible generated from the api.
+            randomIndex = Math.floor(Math.random() * triviaArray.length);
+
+            let triviaResponse = triviaArray[randomIndex];
             console.log(triviaResponse);
         }
 
@@ -40,7 +45,7 @@ function getDataFromSelected() {
     const selectedAPI = apiSelector.value;
 
     if (selectedAPI) {
-        getDataFromSelected(selectedAPI);
+        getData(selectedAPI);
     } else {
         console.error("Please make a selection");
     }
